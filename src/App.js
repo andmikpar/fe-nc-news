@@ -4,10 +4,12 @@ import Nav from './components/Nav';
 import Articles from './components/Articles';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import SingleArticle from './components/SingleArticle';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [IsError, setIsError] = useState(false);
+  const [articleId, setArticleId] = useState();
 
   if (IsError) {
     return (
@@ -36,12 +38,24 @@ function App() {
       ) : (
         <p></p>
       )}
-
       <Routes>
         <Route
           path="/"
           element={
-            <Articles setIsError={setIsError} setIsLoading={setIsLoading} />
+            <Articles
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+              setArticleId={setArticleId}
+            />
+          }
+        />
+        <Route
+          path="/articles/:articleId"
+          element={
+            <SingleArticle
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+            />
           }
         />
       </Routes>

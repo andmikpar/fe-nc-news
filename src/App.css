@@ -79,3 +79,8 @@ html {
   font-weight: 700;
   font-style: italic;
 }
+
+.articleLink {
+  color: black;
+  text-decoration: none;
+}
