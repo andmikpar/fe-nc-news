@@ -23,7 +23,7 @@ const Articles = ({ setIsLoading, setIsError, setArticleId }) => {
       {articleList.map((article) => {
         return (
           <Link to={`/articles/${article.article_id}`} className="articleLink">
-            <div className="article">
+            <div className="article" key={article.article_id}>
               <p className="articleTitle">{article.title}</p>
               <p>Written By: {article.author}</p>
               <p>Votes: {article.votes} </p>

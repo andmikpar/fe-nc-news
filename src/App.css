@@ -84,3 +84,49 @@ html {
   color: black;
   text-decoration: none;
 }
+
+.singleArticleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.singleArticle {
+  border: 3px solid #79756f;
+  border-radius: 20px;
+  width: 66%;
+  justify-content: center;
+  font-size: large;
+}
+
+.singleArticleInteractions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.singleComments {
+  display: flex;
+  justify-content: space-between;
+  width: 40px;
+}
+
+.singleVotes {
+  display: flex;
+  justify-content: space-between;
+  width: 40px;
+}
+
+.singleDate {
+  margin-top: 2px;
+  font-size: small;
+}
+
+.singleAuthor {
+  margin: 0px;
+  font-size: smaller;
+}
+
+.singleTitle {
+  font-size: x-large;
+  text-decoration: underline;
+}

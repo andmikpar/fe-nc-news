@@ -8,17 +8,17 @@ import SingleArticle from './components/SingleArticle';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [IsError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [articleId, setArticleId] = useState();
 
-  if (IsError) {
+  if (isError) {
     return (
       <div className="App">
         <Header />
         <Nav />
-        {console.log(IsError)}
+
         <p>Sorry, something went wrong</p>
-        <p>{IsError}</p>
+        <p>{isError}</p>
       </div>
     );
   }
