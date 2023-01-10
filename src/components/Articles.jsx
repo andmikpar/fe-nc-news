@@ -21,7 +21,7 @@ const Articles = ({ setIsLoading, setIsError }) => {
     <div className="articles">
       {articleList.map((article) => {
         return (
-          <div className="article">
+          <div className="article" key={article.article_id}>
             <p className="articleTitle">{article.title}</p>
             <p>Written By: {article.author}</p>
             <p>Votes: {article.votes} </p>
