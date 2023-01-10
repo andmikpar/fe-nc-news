@@ -9,7 +9,6 @@ import SingleArticle from './components/SingleArticle';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [articleId, setArticleId] = useState();
 
   if (isError) {
     return (
@@ -42,17 +41,14 @@ function App() {
         <Route
           path="/"
           element={
-            <Articles
-              setIsError={setIsError}
-              setIsLoading={setIsLoading}
-              setArticleId={setArticleId}
-            />
+            <Articles setIsError={setIsError} setIsLoading={setIsLoading} />
           }
         />
         <Route
           path="/articles/:articleId"
           element={
             <SingleArticle
+              isLoading={isLoading}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
             />

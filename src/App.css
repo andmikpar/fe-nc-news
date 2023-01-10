@@ -130,3 +130,13 @@ html {
   font-size: x-large;
   text-decoration: underline;
 }
+
+.commentLink {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  background-color: #282c34;
+  cursor: pointer;
+}
