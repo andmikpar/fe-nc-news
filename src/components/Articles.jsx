@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllArticles } from '../utils/api';
 
-const Articles = ({ setIsLoading, setIsError, setArticleId }) => {
+const Articles = ({ setIsLoading, setIsError }) => {
   const [articleList, setArticleList] = useState([]);
 
   useEffect(() => {
