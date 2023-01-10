@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
 import { getAllArticles } from '../utils/api';
 
-const Articles = () => {
+const Articles = ({ setIsLoading, setIsError }) => {
   const [articleList, setArticleList] = useState([]);
 
   useEffect(() => {
-    getAllArticles().then((articleData) => {
-      setArticleList(articleData);
-    });
+    getAllArticles()
+      .then((articleData) => {
+        setArticleList(articleData);
+
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.code);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
