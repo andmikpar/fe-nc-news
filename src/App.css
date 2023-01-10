@@ -137,6 +137,35 @@ html {
 }
 
 button {
-  background-color: #282c34;
+  background-color: #4d4f52;
   cursor: pointer;
+}
+
+.comment {
+  border: 2px solid black;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.commentContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.comments {
+  width: 40%;
+}
+.commentInfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.votesContainer {
+  display: inline-flex;
+}
+
+.voter {
+  margin: 17px 5px;
 }

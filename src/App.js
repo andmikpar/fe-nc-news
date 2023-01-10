@@ -5,6 +5,7 @@ import Articles from './components/Articles';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import SingleArticle from './components/SingleArticle';
+import ArticleComment from './components/ArticleComments';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +33,7 @@ function App() {
             <div></div>
             <div></div>
           </div>
-          <p>Loading Articles</p>
+          <p>Loading</p>
         </div>
       ) : (
         <p></p>
@@ -48,6 +49,16 @@ function App() {
           path="/articles/:articleId"
           element={
             <SingleArticle
+              isLoading={isLoading}
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+            />
+          }
+        />
+        <Route
+          path="/articles/:articleId/comments"
+          element={
+            <ArticleComment
               isLoading={isLoading}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
