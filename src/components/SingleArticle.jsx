@@ -9,7 +9,7 @@ const SingleArticle = ({ isLoading, setIsLoading }) => {
   const { articleId } = useParams();
   const [article, setArticle] = useState({});
   const [voteCount, setVoteCount] = useState(0);
-  const [voted, setVoted] = useState(false);
+  const [voted, setVoted] = useState(0);
   const [voteError, setVoteError] = useState(null);
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const SingleArticle = ({ isLoading, setIsLoading }) => {
   }, []);
 
   const handleVote = (addOrMinus) => {
-    setVoted(true);
     if (addOrMinus === 'add') {
+      setVoted(voted + 1);
       setVoteCount(voteCount + 1);
       patchArticleVotes(article.article_id, +1)
         .then((res) => {
@@ -40,6 +40,7 @@ const SingleArticle = ({ isLoading, setIsLoading }) => {
           return err;
         });
     } else {
+      setVoted(voted - 1);
       setVoteCount(voteCount - 1);
       patchArticleVotes(article.article_id, -1)
         .then((res) => {
@@ -60,7 +61,7 @@ const SingleArticle = ({ isLoading, setIsLoading }) => {
           aria-label="plus1Vote"
           id="addVote"
           className="voteButton"
-          disabled={voted ? true : false}
+          disabled={voted === 0 || voted === -1 ? false : true}
           onClick={(e) => {
             handleVote('add');
           }}
@@ -72,7 +73,7 @@ const SingleArticle = ({ isLoading, setIsLoading }) => {
           aria-label="minus1Vote"
           id="minusVote"
           className="voteButton"
-          disabled={voted ? true : false}
+          disabled={voted === 0 || voted === 1 ? false : true}
           onClick={() => {
             handleVote('minus');
           }}
