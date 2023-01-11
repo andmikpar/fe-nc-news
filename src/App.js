@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import SingleArticle from './components/SingleArticle';
 import ArticleComment from './components/ArticleComments';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,10 +16,19 @@ function App() {
     return (
       <div className="App">
         <Header />
-        <Nav />
 
         <p>Sorry, something went wrong</p>
         <p>{isError}</p>
+        <Link to={'/'} className="homeLink">
+          <button
+            className="errorButton"
+            onClick={() => {
+              setIsError(null);
+            }}
+          >
+            <p className="errorButton">Back to Homepage</p>
+          </button>
+        </Link>
       </div>
     );
   }

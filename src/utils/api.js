@@ -21,3 +21,14 @@ export const getArticleComments = (articleId) => {
     return res.data.comments;
   });
 };
+
+export const patchArticleVotes = (articleId, num) => {
+  return myApi
+    .patch(`/articles/${articleId}`, { inc_votes: num })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
