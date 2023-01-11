@@ -28,6 +28,18 @@ const ArticleComment = ({ isLoading, setIsLoading, setIsError }) => {
           <p className="backButton">back</p>
         </Link>
         <div className="commentContainer">
+          <div className="commentadder">
+            <form className="addComment">
+              <input
+                typeof="text"
+                placeholder="add comment"
+                className="commentInput"
+              ></input>
+
+              <button className="commentSubmit">Add</button>
+            </form>
+          </div>
+
           <div className="comments">
             {comments.map((comment) => {
               return (
