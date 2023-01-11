@@ -218,3 +218,15 @@ button {
 .homeLink {
   text-decoration: none;
 }
+
+.voteButton:disabled {
+  cursor: not-allowed;
+}
+
+.failedVote {
+  border: 2px solid red;
+  color: red;
+  padding: 4px;
+  border-radius: 8px;
+  margin-top: 0px;
+}
