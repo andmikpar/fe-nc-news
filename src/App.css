@@ -250,6 +250,7 @@ html {
   cursor: pointer;
   color: antiquewhite;
   font-size: inherit;
+  width: 100px;
 }
 
 .comment {

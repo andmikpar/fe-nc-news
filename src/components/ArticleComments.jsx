@@ -32,20 +32,45 @@ const ArticleComment = ({
   }, []);
 
   function postComment(input) {
+    setPostError(null);
     if (!input) {
       setPostError('Empty comments not allowed!');
-    } else
-      postNewComment(articleId, input, loggedInUser)
-        .then((res) => {
-          setInput(null);
-          if (res.message) {
-            setPostError(res.message);
-          }
-        })
-        .catch((err) => {
-          return err;
-        });
+    } else if (loggedInUser === 'Sign In') {
+      setPostError('You need to sign in to comment!');
+    }
+    postNewComment(articleId, input, loggedInUser)
+      .then((res) => {
+        setInput(null);
+      })
+      .catch((err) => {
+        return err;
+      });
   }
+
+  const RefreshButton = () => {
+    return (
+      <button
+        className="refreshComments"
+        onClick={() => {
+          setIsLoading(true);
+          getArticleComments(articleId)
+            .then((result) => {
+              setComments(result);
+              setIsLoading(false);
+              setSentComment(false);
+            })
+            .catch((err) => {
+              setIsError(err.message);
+              setIsLoading(false);
+            });
+        }}
+      >
+        <p>
+          Refresh <FiRefreshCcw />
+        </p>
+      </button>
+    );
+  };
 
   if (!isLoading) {
     return (
@@ -53,76 +78,55 @@ const ArticleComment = ({
         <Link to={`/articles/${articleId}`}>
           <p className="backButton">back</p>
         </Link>
-        {postError ? (
-          <p>{postError}</p>
-        ) : (
-          <div className="commentContainer">
-            <div className="commentadder">
-              {sentComment ? (
+
+        <div className="commentContainer">
+          <div className="commentadder">
+            {sentComment && !postError ? (
+              <p>Message posted</p>
+            ) : (
+              <form className="addComment">
+                <input
+                  onChange={(e) => setInput(e.target.value)}
+                  typeof="text"
+                  value={input}
+                  placeholder="add comment"
+                  className="commentInput"
+                ></input>
+
                 <button
-                  className="refreshComments"
-                  onClick={() => {
-                    setIsLoading(true);
-                    getArticleComments(articleId)
-                      .then((result) => {
-                        setComments(result);
-                        setIsLoading(false);
-                        setSentComment(false);
-                      })
-                      .catch((err) => {
-                        setIsError(err.message);
-                        setIsLoading(false);
-                      });
+                  className="commentSubmit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    postComment(input);
+                    setSentComment(true);
                   }}
                 >
-                  <p>
-                    Refresh <FiRefreshCcw />
-                  </p>
+                  Add
                 </button>
-              ) : (
-                <form className="addComment">
-                  <input
-                    onChange={(e) => setInput(e.target.value)}
-                    typeof="text"
-                    value={input}
-                    placeholder="add comment"
-                    className="commentInput"
-                  ></input>
+              </form>
+            )}
+            {postError ? postError : <p></p>}
+            {sentComment && !postError ? <RefreshButton /> : <p></p>}
+          </div>
 
-                  <button
-                    className="commentSubmit"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      postComment(input);
-                      setSentComment(true);
-                    }}
-                  >
-                    Add
-                  </button>
-                </form>
-              )}
-            </div>
-            {isError ? <p>{isError}</p> : <p></p>}
-
-            <div className="comments">
-              {comments.map((comment) => {
-                return (
-                  <div className="comment" key={comment.comment_id}>
-                    <p>{comment.body}</p>
-                    <div className="commentInfo">
-                      <p className="commentAuthor">User: {comment.author}</p>
-                      <div className="votesContainer">
-                        <FiThumbsUp className="voter" />
-                        <p> {comment.votes} </p>
-                        <FiThumbsDown className="voter" />
-                      </div>
+          <div className="comments">
+            {comments.map((comment) => {
+              return (
+                <div className="comment" key={comment.comment_id}>
+                  <p>{comment.body}</p>
+                  <div className="commentInfo">
+                    <p className="commentAuthor">User: {comment.author}</p>
+                    <div className="votesContainer">
+                      <FiThumbsUp className="voter" />
+                      <p> {comment.votes} </p>
+                      <FiThumbsDown className="voter" />
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-        )}
+        </div>
       </div>
     );
   }
