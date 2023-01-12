@@ -7,15 +7,17 @@ import { useState } from 'react';
 import SingleArticle from './components/SingleArticle';
 import ArticleComment from './components/ArticleComments';
 import { Link } from 'react-router-dom';
+import Login from './components/Login';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState('Sign In');
 
   if (isError) {
     return (
       <div className="App">
-        <Header />
+        <Header loggedInUser={loggedInUser} setIsLoading={setIsLoading} />
 
         <p>Sorry, something went wrong</p>
         <p>{isError}</p>
@@ -35,8 +37,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Nav />
+      <Header loggedInUser={loggedInUser} setIsLoading={setIsLoading} />
+      <Nav setIsLoading={setIsLoading} />
       {isLoading ? (
         <div className="loading">
           <div className="lds-ripple">
@@ -70,6 +72,16 @@ function App() {
           element={
             <ArticleComment
               isLoading={isLoading}
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+            />
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <Login
+              setLoggedInUser={setLoggedInUser}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
             />

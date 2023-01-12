@@ -32,3 +32,20 @@ export const patchArticleVotes = (articleId, num) => {
       return err;
     });
 };
+
+export const postNewComment = (article_id, input) => {
+  myApi
+    .post(`/articles/${article_id}/comments`, {
+      username: 'butter_bridge',
+      body: 'Really good article',
+    })
+    .then(function (response) {
+      console.log(response);
+    });
+};
+
+export const getUsers = () => {
+  return myApi.get('/users').then((res) => {
+    return res.data.users;
+  });
+};

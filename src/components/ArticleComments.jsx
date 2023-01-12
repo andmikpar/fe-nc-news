@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleComments } from '../utils/api';
+import { getArticleComments, postNewComment } from '../utils/api';
 import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const ArticleComment = ({ isLoading, setIsLoading, setIsError }) => {
   const { articleId } = useParams();
   const [comments, setComments] = useState([]);
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +22,10 @@ const ArticleComment = ({ isLoading, setIsLoading, setIsError }) => {
       });
   }, []);
 
+  function postComment(input) {
+    return postNewComment(articleId, input);
+  }
+
   if (!isLoading) {
     return (
       <div>
@@ -31,12 +36,20 @@ const ArticleComment = ({ isLoading, setIsLoading, setIsError }) => {
           <div className="commentadder">
             <form className="addComment">
               <input
+                onChange={(e) => setInput(e.target.value)}
                 typeof="text"
                 placeholder="add comment"
                 className="commentInput"
               ></input>
 
-              <button className="commentSubmit">Add</button>
+              <button
+                className="commentSubmit"
+                onClick={(e) => {
+                  postComment(input);
+                }}
+              >
+                Add
+              </button>
             </form>
           </div>
 
