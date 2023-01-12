@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleComments, postNewComment } from '../utils/api';
-import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
+import { FiThumbsDown, FiThumbsUp, FiRefreshCcw } from 'react-icons/fi';
+
 import { Link } from 'react-router-dom';
 
 const ArticleComment = ({
@@ -59,7 +60,7 @@ const ArticleComment = ({
             <div className="commentadder">
               {sentComment ? (
                 <button
-                  className="commentSubmit"
+                  className="refreshComments"
                   onClick={() => {
                     setIsLoading(true);
                     getArticleComments(articleId)
@@ -74,7 +75,9 @@ const ArticleComment = ({
                       });
                   }}
                 >
-                  refresh
+                  <p>
+                    Refresh <FiRefreshCcw />
+                  </p>
                 </button>
               ) : (
                 <form className="addComment">

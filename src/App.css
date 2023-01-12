@@ -244,6 +244,14 @@ html {
   justify-content: space-around;
 }
 
+.refreshComments {
+  font-weight: 700;
+  background-color: #4d4f52;
+  cursor: pointer;
+  color: antiquewhite;
+  font-size: inherit;
+}
+
 .comment {
   outline: none;
 }
