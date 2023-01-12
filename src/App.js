@@ -13,6 +13,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState('Sign In');
+  const [prevPage, setPrevPage] = useState('');
 
   if (isError) {
     return (
@@ -76,6 +77,7 @@ function App() {
               setIsLoading={setIsLoading}
               loggedInUser={loggedInUser}
               isError={isError}
+              setPrevPage={setPrevPage}
             />
           }
         />
@@ -87,6 +89,7 @@ function App() {
               setIsError={setIsError}
               setIsLoading={setIsLoading}
               isLoading={isLoading}
+              prevPage={prevPage}
             />
           }
         />

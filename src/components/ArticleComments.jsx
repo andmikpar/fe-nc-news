@@ -11,6 +11,7 @@ const ArticleComment = ({
   setIsLoading,
   setIsError,
   loggedInUser,
+  setPrevPage,
 }) => {
   const { articleId } = useParams();
   const [comments, setComments] = useState([]);
@@ -24,6 +25,7 @@ const ArticleComment = ({
       .then((result) => {
         setComments(result);
         setIsLoading(false);
+        setPrevPage(document.location.pathname);
       })
       .catch((err) => {
         setIsError(err.code);
@@ -85,13 +87,12 @@ const ArticleComment = ({
               <p>Message posted</p>
             ) : (
               <form className="addComment">
-                <input
+                <textarea
                   onChange={(e) => setInput(e.target.value)}
-                  typeof="text"
                   value={input}
-                  placeholder="add comment"
+                  placeholder="Add comment"
                   className="commentInput"
-                ></input>
+                ></textarea>
 
                 <button
                   className="commentSubmit"

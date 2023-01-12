@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react';
 import { getUsers } from '../utils/api';
 import { Link } from 'react-router-dom';
 
-const Login = ({ setLoggedInUser, setIsLoading, setIsError, isLoading }) => {
+const Login = ({
+  setLoggedInUser,
+  setIsLoading,
+  setIsError,
+  isLoading,
+  prevPage,
+}) => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -16,6 +22,8 @@ const Login = ({ setLoggedInUser, setIsLoading, setIsError, isLoading }) => {
       });
   }, []);
 
+
+
   return (
     <div>
       <h2>Choose who to sign in as</h2>
@@ -24,7 +32,7 @@ const Login = ({ setLoggedInUser, setIsLoading, setIsError, isLoading }) => {
         {userList.map((user) => {
           return (
             <Link
-              to={`/`}
+              to={prevPage}
               className="userCard"
               onClick={() => {
                 setLoggedInUser(user);

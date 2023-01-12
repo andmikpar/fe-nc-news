@@ -252,7 +252,9 @@ html {
   font-size: inherit;
   width: 100px;
 }
-
+.addComment {
+  display: inline-flex;
+}
 .comment {
   outline: none;
 }
