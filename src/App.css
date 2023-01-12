@@ -195,6 +195,10 @@ html {
   text-decoration: underline;
 }
 
+.successMessage {
+  color: rgb(48, 245, 48);
+}
+
 .commentLink {
   text-decoration: none;
 }
@@ -254,6 +258,10 @@ html {
 }
 .addComment {
   display: inline-flex;
+}
+
+.postFeedback {
+  color: red;
 }
 .comment {
   outline: none;

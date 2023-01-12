@@ -19,19 +19,38 @@ const ArticleComment = ({
   const [sentComment, setSentComment] = useState(false);
   const [postError, setPostError] = useState(null);
 
-  useEffect(() => {
-    setIsLoading(true);
+  function performGet() {
     getArticleComments(articleId)
       .then((result) => {
         setComments(result);
         setIsLoading(false);
-        setPrevPage(document.location.pathname);
       })
       .catch((err) => {
         setIsError(err.code);
         setIsLoading(false);
       });
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+    performGet();
+    setPrevPage(document.location.pathname);
   }, []);
+
+  function updateList() {
+    const newComment = {
+      author: loggedInUser.username,
+      body: input,
+      votes: 0,
+    };
+
+    setComments([newComment, ...comments]);
+  }
+
+  function removeRender() {
+    performGet();
+    return postError;
+  }
 
   function postComment(input) {
     setPostError(null);
@@ -39,40 +58,16 @@ const ArticleComment = ({
       setPostError('Empty comments not allowed!');
     } else if (loggedInUser === 'Sign In') {
       setPostError('You need to sign in to comment!');
-    }
-    postNewComment(articleId, input, loggedInUser)
-      .then((res) => {
-        setInput(null);
-      })
-      .catch((err) => {
-        return err;
-      });
+    } else
+      postNewComment(articleId, input, loggedInUser)
+        .then((res) => {
+          setPostError(res);
+          setInput(null);
+        })
+        .catch((err) => {
+          return err;
+        });
   }
-
-  const RefreshButton = () => {
-    return (
-      <button
-        className="refreshComments"
-        onClick={() => {
-          setIsLoading(true);
-          getArticleComments(articleId)
-            .then((result) => {
-              setComments(result);
-              setIsLoading(false);
-              setSentComment(false);
-            })
-            .catch((err) => {
-              setIsError(err.message);
-              setIsLoading(false);
-            });
-        }}
-      >
-        <p>
-          Refresh <FiRefreshCcw />
-        </p>
-      </button>
-    );
-  };
 
   if (!isLoading) {
     return (
@@ -84,7 +79,7 @@ const ArticleComment = ({
         <div className="commentContainer">
           <div className="commentadder">
             {sentComment && !postError ? (
-              <p>Message posted</p>
+              <div className="successMessage">Message posted!</div>
             ) : (
               <form className="addComment">
                 <textarea
@@ -99,6 +94,7 @@ const ArticleComment = ({
                   onClick={(e) => {
                     e.preventDefault();
                     postComment(input);
+                    !postError ? updateList() : <p></p>;
                     setSentComment(true);
                   }}
                 >
@@ -106,8 +102,12 @@ const ArticleComment = ({
                 </button>
               </form>
             )}
-            {postError ? postError : <p></p>}
-            {sentComment && !postError ? <RefreshButton /> : <p></p>}
+            <br></br>
+            {postError ? (
+              <div className="postFeedback"> {removeRender()}</div>
+            ) : (
+              <p></p>
+            )}
           </div>
 
           <div className="comments">

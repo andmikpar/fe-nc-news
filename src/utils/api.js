@@ -41,7 +41,7 @@ export const postNewComment = (article_id, input, loggedInUser) => {
     })
     .then((res) => {})
     .catch((err) => {
-      return err;
+      return err.message;
     });
 };
 
