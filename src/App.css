@@ -113,8 +113,10 @@ html {
 
 .singleVotes {
   display: flex;
-  justify-content: space-between;
-  width: 40px;
+  justify-content: center;
+  width: 60px;
+  font-size: x-large;
+  margin-top: 10px;
 }
 
 .singleDate {
@@ -182,4 +184,49 @@ button {
 
 .topic {
   color: antiquewhite;
+}
+
+.articleVote {
+  padding-top: 10px;
+}
+
+.voteCount {
+  margin-top: 10px;
+}
+
+.voteButton {
+  border: 0px;
+  background-color: #282c34;
+  font-size: inherit;
+  padding-bottom: 20px;
+}
+
+#addVote:hover {
+  color: green;
+}
+
+#minusVote:hover {
+  color: red;
+}
+
+.errorButton {
+  height: 70px;
+  width: 110px;
+  display: inline;
+}
+
+.homeLink {
+  text-decoration: none;
+}
+
+.voteButton:disabled {
+  cursor: not-allowed;
+}
+
+.failedVote {
+  border: 2px solid red;
+  color: red;
+  padding: 4px;
+  border-radius: 8px;
+  margin-top: 0px;
 }

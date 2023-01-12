@@ -31,7 +31,7 @@ const ArticleComment = ({ isLoading, setIsLoading, setIsError }) => {
           <div className="comments">
             {comments.map((comment) => {
               return (
-                <div className="comment" key={comments.comment_id}>
+                <div className="comment" key={comment.comment_id}>
                   <p>{comment.body}</p>
                   <div className="commentInfo">
                     <p className="commentAuthor">User: {comment.author}</p>
