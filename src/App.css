@@ -4,6 +4,11 @@ html {
   color: antiquewhite;
 }
 
+.logo {
+  font-size: 50px;
+  margin: 17px 0px 0px 0px;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -15,6 +20,11 @@ html {
   font-size: 66px;
   color: antiquewhite;
   padding-top: 5px;
+}
+
+.signInLink {
+  font-size: large;
+  margin-top: -11px;
 }
 
 .users {
@@ -189,31 +199,56 @@ html {
   text-decoration: none;
 }
 
-button {
+.commentSubmit {
   background-color: #4d4f52;
   cursor: pointer;
   color: antiquewhite;
 }
 
 .comment {
-  border: 2px solid black;
+  border: 2px solid antiquewhite;
   margin: 5px;
   border-radius: 5px;
+  margin: 5px;
+}
+
+.comment:hover {
+  transform: scale(1.02);
 }
 
 .commentContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 }
 
 .comments {
-  width: 40%;
+  margin: auto;
+  width: 50%;
+  min-width: 250px;
+  display: grid;
+}
+
+.commentAdder {
+  margin-left: 120px;
+  position: fixed;
+  margin-top: 35px;
+  border: 0.1px solid antiquewhite;
+  padding: 15px;
+  color: antiquewhite;
+  width: 35px;
 }
 .commentInfo {
   display: flex;
   justify-content: space-around;
+}
+
+.comment {
+  outline: none;
+}
+.commentInput :focus {
+  border: 3px solid #79756f;
 }
 
 .votesContainer {
@@ -225,12 +260,12 @@ button {
 }
 
 .backButton {
-  margin-left: 120px;
+  max-width: 12%;
   position: fixed;
-  margin-top: 35px;
   border: 0.1px solid antiquewhite;
   padding: 15px;
   color: antiquewhite;
+  background-color: #4d4f52;
 }
 
 .topic {
@@ -250,6 +285,7 @@ button {
   background-color: #282c34;
   font-size: inherit;
   padding-bottom: 20px;
+  color: antiquewhite;
 }
 
 #addVote:hover {
@@ -268,4 +304,16 @@ button {
 
 .homeLink {
   text-decoration: none;
+}
+
+.voteButton:disabled {
+  cursor: not-allowed;
+}
+
+.failedVote {
+  border: 2px solid red;
+  color: red;
+  padding: 4px;
+  border-radius: 8px;
+  margin-top: 0px;
 }

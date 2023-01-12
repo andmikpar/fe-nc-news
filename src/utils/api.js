@@ -33,14 +33,15 @@ export const patchArticleVotes = (articleId, num) => {
     });
 };
 
-export const postNewComment = (article_id, input) => {
-  myApi
+export const postNewComment = (article_id, input, loggedInUser) => {
+  return myApi
     .post(`/articles/${article_id}/comments`, {
-      username: 'butter_bridge',
-      body: 'Really good article',
+      username: loggedInUser.username,
+      body: input,
     })
-    .then(function (response) {
-      console.log(response);
+    .then((res) => {})
+    .catch((err) => {
+      return err;
     });
 };
 

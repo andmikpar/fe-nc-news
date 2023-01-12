@@ -74,6 +74,8 @@ function App() {
               isLoading={isLoading}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
+              loggedInUser={loggedInUser}
+              isError={isError}
             />
           }
         />
@@ -84,6 +86,7 @@ function App() {
               setLoggedInUser={setLoggedInUser}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
+              isLoading={isLoading}
             />
           }
         />
