@@ -8,6 +8,7 @@ import SingleArticle from './components/SingleArticle';
 import ArticleComment from './components/ArticleComments';
 import { Link } from 'react-router-dom';
 import Login from './components/Login';
+import { ShareIcons } from './components/ShareIcons';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +41,9 @@ function App() {
     <div className="App">
       <Header loggedInUser={loggedInUser} setIsLoading={setIsLoading} />
       <Nav setIsLoading={setIsLoading} />
+      <div className="share">
+        <ShareIcons />
+      </div>
       {isLoading ? (
         <div className="loading">
           <div className="lds-ripple">
