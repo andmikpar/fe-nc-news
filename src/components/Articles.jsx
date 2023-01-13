@@ -6,13 +6,16 @@ import { useSearchParams } from 'react-router-dom';
 const Articles = ({ setIsLoading, setIsError, setPrevPage }) => {
   const [articleList, setArticleList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sort_by, setSort_By] = useState('');
   const topicQuery = searchParams.get('topic');
+  const sortByQuery = searchParams.get('sort_by');
+  console.log(sortByQuery);
 
   useEffect(() => {
     setIsLoading(true);
     setPrevPage(window.location.href);
 
-    getAllArticles(topicQuery)
+    getAllArticles(topicQuery, sort_by)
       .then((articleData) => {
         setArticleList(articleData);
 
@@ -22,10 +25,26 @@ const Articles = ({ setIsLoading, setIsError, setPrevPage }) => {
         setIsError(err.code);
         setIsLoading(false);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery]);
 
   return (
     <div className="articles">
+      <div className="order">
+        <form
+          onChange={(e) => {
+            setSort_By(e.target.value);
+          }}
+        >
+          <label>Order by:</label>
+          <select name="sortQuery" id="sortQuery">
+            <option value="" disabled selected hidden>
+              Choose one
+            </option>
+            <option value="article_id">Article ID</option>
+            <option value="created_at">Date</option>
+          </select>
+        </form>
+      </div>
       {articleList.map((article) => {
         return (
           <Link

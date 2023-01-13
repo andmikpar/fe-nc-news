@@ -4,9 +4,10 @@ const myApi = axios.create({
   baseURL: 'https://nc-news-k43r.onrender.com/api',
 });
 
-export const getAllArticles = (topic) => {
+export const getAllArticles = (topic, sort_by) => {
+  console.log(topic, sort_by);
   return myApi
-    .get('/articles', { params: { topic } })
+    .get('/articles', { params: { topic, sort_by } })
     .then((res) => {
       return res.data.articles;
     })
