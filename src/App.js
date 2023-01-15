@@ -7,15 +7,19 @@ import { useState } from 'react';
 import SingleArticle from './components/SingleArticle';
 import ArticleComment from './components/ArticleComments';
 import { Link } from 'react-router-dom';
+import Login from './components/Login';
+import { ShareIcons } from './components/ShareIcons';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState('Sign In');
+  const [prevPage, setPrevPage] = useState('');
 
   if (isError) {
     return (
       <div className="App">
-        <Header />
+        <Header loggedInUser={loggedInUser} />
 
         <p>Sorry, something went wrong</p>
         <p>{isError}</p>
@@ -35,8 +39,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Nav />
+      <Header loggedInUser={loggedInUser} setIsLoading={setIsLoading} />
+
       {isLoading ? (
         <div className="loading">
           <div className="lds-ripple">
@@ -46,13 +50,23 @@ function App() {
           <p>Loading</p>
         </div>
       ) : (
-        <p></p>
+        <div>
+          <Nav setIsLoading={setIsLoading} />
+          <div className="share">
+            <ShareIcons />
+          </div>
+        </div>
       )}
       <Routes>
         <Route
           path="/"
           element={
-            <Articles setIsError={setIsError} setIsLoading={setIsLoading} />
+            <Articles
+              setPrevPage={setPrevPage}
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+            />
           }
         />
         <Route
@@ -72,6 +86,21 @@ function App() {
               isLoading={isLoading}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
+              loggedInUser={loggedInUser}
+              isError={isError}
+              prevPage={prevPage}
+              setPrevPage={setPrevPage}
+            />
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <Login
+              setLoggedInUser={setLoggedInUser}
+              setIsError={setIsError}
+              setIsLoading={setIsLoading}
+              prevPage={prevPage}
             />
           }
         />
