@@ -40,10 +40,7 @@ function App() {
   return (
     <div className="App">
       <Header loggedInUser={loggedInUser} setIsLoading={setIsLoading} />
-      <Nav setIsLoading={setIsLoading} />
-      <div className="share">
-        <ShareIcons />
-      </div>
+
       {isLoading ? (
         <div className="loading">
           <div className="lds-ripple">
@@ -53,7 +50,12 @@ function App() {
           <p>Loading</p>
         </div>
       ) : (
-        <p></p>
+        <div>
+          <Nav setIsLoading={setIsLoading} />
+          <div className="share">
+            <ShareIcons />
+          </div>
+        </div>
       )}
       <Routes>
         <Route
@@ -63,6 +65,7 @@ function App() {
               setPrevPage={setPrevPage}
               setIsError={setIsError}
               setIsLoading={setIsLoading}
+              isLoading={isLoading}
             />
           }
         />
