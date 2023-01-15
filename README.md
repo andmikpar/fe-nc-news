@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# NC News Frontend Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Remove the create react app readme and add your own
+Things your readme should include:
 
-## Available Scripts
+has a link to the deployed version
+provides general info about your app add a brief description of what the project is and how to use your app
+includes links to your back end repo
+specifies the minimum version of Node required to run locally (check your Node version, node --version and use the major version that you are on)
+has clear instructions on how to run your project locally (git clone <repo-url>, cd ...) -->
 
-In the project directory, you can run:
+Link to the deployed version of the app here -->https://ap-nc-news.netlify.app/.
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Northcoders news is a React application in which users can read and interact with news articles. Users can view articles by topic, sorted and ordered how they wish, give up or downvotes, and leave comments on the articles. There is currently a list of users, without an authentication system, so you can navigate to the sign in page to log in as the appropriate user.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Backend
 
-### `npm test`
+You can view the hosted version of the backend api used for this application here --> https://nc-news-k43r.onrender.com/api/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Also if you wish to view it, by following this link you can view the code that was used to build the backend API -->https://github.com/andmikpar/ap-nc-news
 
-### `npm run build`
+## Running this project locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In order to run this project locally, you should be using Node version 18 or higher.
+First, navigate the the appropriate folder in your terminal, and enter the following command
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone github.com/andmikpar/ap-nc-news.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+and then CD into the base of the repository
 
-### `npm run eject`
+`cd fe-nc-news`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+install all of the dependencies for the project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Then, in order to see the app running, run the following script
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm run start`
