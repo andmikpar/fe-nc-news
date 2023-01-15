@@ -60,42 +60,83 @@ const Articles = ({ setIsLoading, setIsError, setPrevPage, isLoading }) => {
   if (!isLoading)
     return (
       <div className="articles">
-        <div className="sort">
-          <form
-            onChange={(e) => {
-              setSort_By(e.target.value);
-            }}
-          >
-            <label>Sort by:</label>
-            <select name="sortQuery" id="sortQuery">
-              <option value="" disabled selected hidden>
-                {buttonFiller(sort_by)}
-              </option>
-              <option value="created_at">Date</option>
-              <option value="votes">Votes</option>
-              <option value="comment_count">Number of Comments</option>
-              <option value="title">Alphabetically</option>
-              <option value="author">Author</option>
-            </select>
-          </form>
-        </div>
-        <div className="order">
-          <form
-            onChange={(e) => {
-              setOrder_By(e.target.value);
-            }}
-          >
-            <label>Order by:</label>
-            <select name="orderQuery" id="orderQuery">
-              <option value="" disabled selected hidden>
-                {buttonFiller(order_by)}
-              </option>
-              <option value="ASC">Ascending</option>
-              <option value="DESC">Descending</option>
-            </select>
-          </form>
-        </div>
+        <div className="viewOptions">
+          <div className="dropdown">
+            <button className="dropbtn">Sort By</button>
+            <div className="dropdown-content">
+              <button
+                className="dropdownOption"
+                value="created_at"
+                onClick={(e) => {
+                  setSort_By(e.target.value);
+                }}
+              >
+                Date
+              </button>
+              <button
+                className="dropdownOption"
+                value="votes"
+                onClick={(e) => {
+                  setSort_By(e.target.value);
+                }}
+              >
+                Votes
+              </button>
+              <button
+                className="dropdownOption"
+                value="comment_count"
+                onClick={(e) => {
+                  setSort_By(e.target.value);
+                }}
+              >
+                Number of Comments
+              </button>
+              <button
+                className="dropdownOption"
+                value="title"
+                onClick={(e) => {
+                  setSort_By(e.target.value);
+                }}
+              >
+                Alphabetically
+              </button>
 
+              <button
+                className="dropdownOption"
+                value="author"
+                onClick={(e) => {
+                  setSort_By(e.target.value);
+                }}
+              >
+                Author
+              </button>
+            </div>
+          </div>
+
+          <div className="dropdown">
+            <button className="dropbtn">Order By</button>
+            <div className="dropdown-content">
+              <button
+                className="dropdownOption"
+                value="DESC"
+                onClick={(e) => {
+                  setOrder_By(e.target.value);
+                }}
+              >
+                Descending
+              </button>
+              <button
+                className="dropdownOption"
+                value="ASC"
+                onClick={(e) => {
+                  setOrder_By(e.target.value);
+                }}
+              >
+                Ascending
+              </button>
+            </div>
+          </div>
+        </div>
         {articleList.map((article) => {
           return (
             <Link
