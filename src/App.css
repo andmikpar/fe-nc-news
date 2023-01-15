@@ -339,6 +339,7 @@ html {
 
 .topics {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   border: 1px solid #79756f;
 }
